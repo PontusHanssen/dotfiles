@@ -6,5 +6,5 @@ total_run_times 0
 use_spacer none
 
 TEXT
-$mpd_smart :: ${cpu cpu1}% / ${cpu cpu2}%  ${loadavg 1} ${loadavg 2 3} :: ${acpitemp}c :: $memperc% ($mem) :: ${downspeed eth0}K/s ${upspeed eth0}K/s :: ${time %a %b %d %I:%M%P}
+  ${battery_short} :: ${wireless_essid wlp3s0} ${if_match "${addr wlp3s0}" != "0.0.0.0"}UP${else}DOWN${endif} ${wireless_link_qual_perc wlp3s0}% :: ${acpitemp}c :: ${cpu cpu1}% / ${cpu cpu2}% :: RAM $memperc% ($mem) :: ${time %Y-%m-%d %H:%M}
 
