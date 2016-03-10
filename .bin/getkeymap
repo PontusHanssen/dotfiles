@@ -1,4 +1,0 @@
-#!/bin/sh
-
-CURRENT=$(setxkbmap -query | grep layout | cut -c13-)
-echo $CURRENT
