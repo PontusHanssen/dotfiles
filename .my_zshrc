@@ -5,6 +5,8 @@ zstyle :compinstall filename '/home/pontus/.zshrc'
 
 autoload -Uz compinit
 compinit
+autoload -U promptinit
+promptinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -14,3 +16,7 @@ setopt autocd
 bindkey -e
 # End of lines configured by zsh-newuser-install
 alias config='/usr/bin/git --git-dir=/home/pontus/.dotfiles/ --work-tree=/home/pontus'
+sc () {
+	echo $@ | socat - UNIX-CONNECT:/tmp/spotifyd 2>/dev/null
+}
+
