@@ -1,0 +1,10 @@
+#!/bin/bash
+
+CURRENT=$(setxkbmap -query | grep layout | cut -c13-)
+
+if [ $CURRENT == "us" ]; then
+	setxkbmap se
+else
+	setxkbmap us
+fi
+
