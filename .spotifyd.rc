@@ -1,5 +1,5 @@
-username chewbacka1337
-password rPP7qkXv
+username ******
+password ******
 unix-socket /tmp/spotifyd
 port 12345
 log /tmp/spotifyd-log
