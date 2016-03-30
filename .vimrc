@@ -11,13 +11,6 @@ set bs=2
 let mapleader = ","
 
 
-" Bind nohl
-" Removes highlight of your last search
-noremap <C-n> :nohl<CR>
-vnoremap <C-n> :nohl<CR>
-inoremap <C-n> :nohl<CR>
-
-
 " Quicksave command
 noremap <C-Z> :update<CR>
 vnoremap <C-Z> <C-C>:update<CR>
@@ -40,7 +33,7 @@ map <Leader>m <esc>:tabnext<CR>
 " easier tab open and close
 map <Leader>t <esc>:tabedit<CR>
 map <Leader>w <esc>:tabclose<CR>
-
+map <Leader>e <esc>:edit ./ <CR>
 
 " map sort function to a key
 vnoremap <Leader>s :sort<CR>
