@@ -1,0 +1,9 @@
+[user]
+	email = persson@flaskpost.org
+	name = Pontus Persson
+[core]
+	editor = vim
+[alias]
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    s = status
