@@ -19,5 +19,5 @@ alias config='/usr/bin/git --git-dir=/home/pontus/.dotfiles/ --work-tree=/home/p
 sc () {
 	echo $@ | socat - UNIX-CONNECT:/tmp/spotifyd 2>/dev/null
 }
-alias rtorrent='ssh pontus.flaskpost.org -t screen -r rtorrent'
+alias rtorrent='ssh pontus.flaskpost.org -t tmux attach -t rtorrent'
 alias nosleep="xset s off; xset -dpms; xset -dpms; xset s off"
