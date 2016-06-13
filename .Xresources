@@ -3,7 +3,9 @@ URxvt.perl-ext-common:resize-font
 URxvt.resize-font.smaller: C-Down
 URxvt.resize-font.bigger: C-Up
 URxvt.scrollBar: false
-
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
 ! Colors ------------
 *background: #0f0f0f
 *foreground: #c8c8c8

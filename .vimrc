@@ -10,7 +10,7 @@ set bs=2
 " Rebind <Leader> key
 let mapleader = ","
 
-
+au BufRead /tmp/mutt-* set tw=72
 " Quicksave command
 noremap <C-Z> :update<CR>
 vnoremap <C-Z> <C-C>:update<CR>
@@ -66,6 +66,7 @@ syntax on
 
 " Showing line numbers and length
 set number  " show line numbers
+set relativenumber
 set tw=79   " width of document (used by gd)
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
@@ -108,3 +109,20 @@ set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 
 set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
+autocmd FileType c setlocal foldmethod=syntax
+
+" Repeat last command in the next tmux pane.
+nnoremap <Leader>r :call TmuxRepeat()<CR>
+nnoremap <Leader>p :call TmuxRun()<CR>
+function! TmuxRepeat()
+    silent! exec "!tmux select-pane -l && tmux send up enter && tmux select-pane -l"
+    redraw!
+endfunction
+
+function! TmuxRun()
+    call inputsave()
+    let cmd = input('TmuxRun: ')
+    call inputrestore()
+    silent! exec "!tmux select-pane -l && tmux send " . cmd . " enter && tmux select-pane -l"
+    redraw!
+endfunction
