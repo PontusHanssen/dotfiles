@@ -1,9 +1,8 @@
 URxvt.font: xft:Roboto Mono for Powerline:size=8
-URxvt.perl-ext-common:resize-font
+URxvt.perl-ext-common:resize-font,default,matcher,osc-xtern-clipboard
 URxvt.resize-font.smaller: C-Down
 URxvt.resize-font.bigger: C-Up
 URxvt.scrollBar: false
-URxvt.perl-ext-common: default,matcher
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 ! Colors ------------

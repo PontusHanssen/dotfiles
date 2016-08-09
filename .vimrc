@@ -126,3 +126,12 @@ function! TmuxRun()
     silent! exec "!tmux select-pane -l && tmux send " . cmd . " enter && tmux select-pane -l"
     redraw!
 endfunction
+
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin('Valloric/YouCompleteMe')
+Plugin 'rust-lang/rust.vim'
+call vundle#end()            " required
+filetype plugin indent on    " required
+

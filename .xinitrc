@@ -3,6 +3,7 @@ setxkbmap se &
 pulseaudio --start &
 wmname LG3D
 xdg-user-dirs-update &
+xrandr --dpi 90
 
 (conky | while read LINE; do xsetroot -name "$LINE"; done) &
 while true; do

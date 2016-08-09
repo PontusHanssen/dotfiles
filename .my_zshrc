@@ -21,3 +21,5 @@ sc () {
 }
 alias rtorrent='ssh pontus.flaskpost.org -t tmux attach -t rtorrent'
 alias nosleep="xset s off; xset -dpms; xset -dpms; xset s off"
+alias emacs='emacs -nw'
+PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
