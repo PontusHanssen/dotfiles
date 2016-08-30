@@ -1,137 +1,87 @@
-" Automatic reloading of .vimrc
-autocmd! bufwritepost .vimrc source %
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-
-" Mouse and backspace
-set mouse=a
-set bs=2
-
-
-" Rebind <Leader> key
-let mapleader = ","
-
-au BufRead /tmp/mutt-* set tw=72
-" Quicksave command
-noremap <C-Z> :update<CR>
-vnoremap <C-Z> <C-C>:update<CR>
-inoremap <C-Z> <C-O>:update<CR>
-
-
-" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
-" Every unnecessary keystroke that can be saved is good for your health :)
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
-
-
-" easier moving between tabs
-map <Leader>n <esc>:tabprevious<CR>
-map <Leader>m <esc>:tabnext<CR>
-
-
-" easier tab open and close
-map <Leader>t <esc>:tabedit<CR>
-map <Leader>w <esc>:tabclose<CR>
-map <Leader>e <esc>:edit ./ <CR>
-
-" map sort function to a key
-vnoremap <Leader>s :sort<CR>
-
-
-" easier moving of code blocks
-vnoremap < <gv  " better indentation
-vnoremap > >gv  " better indentation
-
-
-" Show whitespace
-" MUST be inserted BEFORE the colorscheme command
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
-
-
-" Color scheme
-" mkdir -p ~/.vim/colors && cd ~/.vim/colors
-" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
-set t_Co=256
-color wombat256mod
-
-
-" Enable syntax highlighting
-" You need to reload this file for the change to apply
-filetype off
-filetype plugin indent on
-syntax on
-
-
-" Showing line numbers and length
-set number  " show line numbers
-set relativenumber
-set tw=79   " width of document (used by gd)
-set nowrap  " don't automatically wrap on load
-set fo-=t   " don't automatically wrap text when typing
-set colorcolumn=80
-highlight ColorColumn ctermbg=233
-
-
-" easier formatting of paragraphs
-"" vmap Q gq
-"" nmap Q gqap
-
-
-" Useful settings
-set history=700
-set undolevels=700
-
-
-" Real programmers don't use TABs but spaces
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround
-set expandtab
-
-
-" Make search case insensitive
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-
-
-" Disable stupid backup and swap files - they trigger too many events
-" for file system watchers
-set nobackup
-set nowritebackup
-set noswapfile
-
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor = "latex"
-
-set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
-autocmd FileType c setlocal foldmethod=syntax
-
-" Repeat last command in the next tmux pane.
-nnoremap <Leader>r :call TmuxRepeat()<CR>
-nnoremap <Leader>p :call TmuxRun()<CR>
-function! TmuxRepeat()
-    silent! exec "!tmux select-pane -l && tmux send up enter && tmux select-pane -l"
-    redraw!
-endfunction
-
-function! TmuxRun()
-    call inputsave()
-    let cmd = input('TmuxRun: ')
-    call inputrestore()
-    silent! exec "!tmux select-pane -l && tmux send " . cmd . " enter && tmux select-pane -l"
-    redraw!
-endfunction
-
-filetype off
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin('Valloric/YouCompleteMe')
-Plugin 'rust-lang/rust.vim'
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'luochen1990/rainbow'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
+Plugin 'majutsushi/tagbar'
+Plugin 'pangloss/vim-javascript'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-latex/vim-latex'
+
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+" Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
+" General Config
+syntax enable
+set number
+set relativenumber
+let mapleader = " "
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+
+" Plugin configuration
+
+" rainbow parens
+let g:rainbow_active = 1
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" NERDTree
+map <Leader>f :NERDTreeToggle<CR>
+map <Leader>F :NERDTreeFind<CR>
+
+" Tagbar
+map <Leader>l :TagbarToggle<CR>
+
+" ColorScheme
+let g:solarized_termcolors=16
+let g:solarized_termtrans=1
+set background=dark
+colorscheme solarized

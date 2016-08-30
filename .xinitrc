@@ -1,9 +1,10 @@
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources &
+feh --bg-fill ~/.wallpaper.jpg &
 setxkbmap se &
 pulseaudio --start &
-wmname LG3D
+wmname LG3D &
 xdg-user-dirs-update &
-xrandr --dpi 90
+xcompmgr &
 
 (conky | while read LINE; do xsetroot -name "$LINE"; done) &
 while true; do
