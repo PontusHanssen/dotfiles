@@ -5,6 +5,7 @@ pulseaudio --start &
 wmname LG3D &
 xdg-user-dirs-update &
 xcompmgr &
+xss-lock slock &
 
 (conky | while read LINE; do xsetroot -name "$LINE"; done) &
 while true; do

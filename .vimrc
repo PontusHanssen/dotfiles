@@ -13,8 +13,11 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 Plugin 'majutsushi/tagbar'
 Plugin 'pangloss/vim-javascript'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-latex/vim-latex'
+Plugin 'adimit/prolog.vim'
+Plugin 'mxw/vim-jsx'
+
+
 
 
 " The following are examples of different formats supported.
@@ -57,6 +60,9 @@ let mapleader = " "
 set expandtab
 set shiftwidth=2
 set softtabstop=2
+set mouse=a
+set background=dark
+colorscheme wombat256mod
 
 " Plugin configuration
 
@@ -80,8 +86,3 @@ map <Leader>F :NERDTreeFind<CR>
 " Tagbar
 map <Leader>l :TagbarToggle<CR>
 
-" ColorScheme
-let g:solarized_termcolors=16
-let g:solarized_termtrans=1
-set background=dark
-colorscheme solarized
