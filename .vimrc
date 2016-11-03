@@ -7,7 +7,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-airline/vim-airline'
 Plugin 'luochen1990/rainbow'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
@@ -16,6 +15,10 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'vim-latex/vim-latex'
 Plugin 'adimit/prolog.vim'
 Plugin 'mxw/vim-jsx'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'PontusPersson/pddl.vim'
+
 
 
 
@@ -62,7 +65,7 @@ set shiftwidth=2
 set softtabstop=2
 set mouse=a
 set background=dark
-colorscheme wombat256mod
+colorscheme solarized
 
 " Plugin configuration
 
@@ -86,3 +89,8 @@ map <Leader>F :NERDTreeFind<CR>
 " Tagbar
 map <Leader>l :TagbarToggle<CR>
 
+" YouCompleteMe
+let g:EclimCompletionMethod = 'omnifunc'
+
+" jsx
+let g:jsx_ext_required = 0
