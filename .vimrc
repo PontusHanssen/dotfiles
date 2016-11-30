@@ -66,8 +66,15 @@ set softtabstop=2
 set mouse=a
 set background=dark
 colorscheme solarized
+map <Leader>m :w<CR>:!make<CR><CR>
 
 " Plugin configuration
+
+" Vim-latex
+let g:tex_flavor='latex'
+set grepprg=grep\ -nH\ $*
+let g:Tex_Folding=0
+set iskeyword+=:
 
 " rainbow parens
 let g:rainbow_active = 1
@@ -94,3 +101,4 @@ let g:EclimCompletionMethod = 'omnifunc'
 
 " jsx
 let g:jsx_ext_required = 0
+
